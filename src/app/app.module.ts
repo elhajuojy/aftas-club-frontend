@@ -12,6 +12,11 @@ import { StatusCompetition } from './models/competition-status-enum.model';
 import { HttpClientModule } from '@angular/common/http';
 import { CompetitionDetailComponent } from './pages/competition-detail/competition-detail.component';
 import { HomeComponent } from './pages/home/home.component';
+import { RankingComponent } from './pages/ranking/ranking.component';
+import { RankCardTrComponent } from './shared/rank-card-tr/rank-card-tr.component';
+import { AddCompetitionModalComponent } from './shared/add-competition-modal/add-competition-modal.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,10 @@ import { HomeComponent } from './pages/home/home.component';
     AdminNavbarComponent,
     MemberComponent,
     CompetitionDetailComponent,
-    HomeComponent
+    HomeComponent,
+    RankingComponent,
+    RankCardTrComponent,
+    AddCompetitionModalComponent
   ],
   schemas:[NO_ERRORS_SCHEMA],
   imports: [
@@ -28,7 +36,9 @@ import { HomeComponent } from './pages/home/home.component';
     AppRoutingModule,
     ButtonModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
 
   ],
   providers: [],
