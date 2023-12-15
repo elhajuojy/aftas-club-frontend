@@ -1,4 +1,3 @@
-
 <div class="container mt-2 mx-auto px-4 text-left">
   <h1 class="text-2xl font-bold mb-4">Welcome, Admin!</h1>
 
@@ -6,75 +5,38 @@
     <app-add-competition-modal></app-add-competition-modal>
   </div>
 
-  <div class="card">
-    <p-table [value]="competitions" [tableStyle]="{'min-width': '60rem'}">
-        <ng-template pTemplate="caption">
-            <div class="flex align-items-center justify-content-between">
-                Products
-                <p-button icon="pi pi-refresh"></p-button>
-            </div>
-        </ng-template>
-        <ng-template pTemplate="header">
-            <tr>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Price</th>
-                <th>Category</th>
-                <th>Reviews</th>
-                <!-- <th>Status</th> -->
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-product>
-            <tr>
-                <td>{{product.name}}</td>
-                <td><img title="product" [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td>
-                <td>{{product.price | currency:'USD'}}</td>
-                <td>{{product.category}}</td>
-                <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td>
-                <!-- <td><p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag></td> -->
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="summary">
-            <div class="flex align-items-center justify-content-between">
-                In total there are {{competitions ? competitions.length : 0 }} products.
-            </div>
-        </ng-template>
-    </p-table>
-  </div>
-
-  <div class="overflow-x-auto">
-    <table class="table-auto w-full">
-      <thead>
-        <tr class="text-sm">
-          <th class="px-4 py-2">Code</th>
-          <th class="px-4 py-2">Date</th>
-          <th class="px-4 py-2">Start Time</th>
-          <th class="px-4 py-2">End Time</th>
-          <th class="px-4 py-2">Participants</th>
-          <th class="px-4 py-2">Location</th>
-          <th class="px-4 py-2">Amount</th>
-          <th class="px-4 py-2">Status</th>
-          <th class="px-4 py-2">Action</th> <!-- Added action column -->
+  <div class="mx-2 my-2 relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">Code</th>
+          <th scope="col" class="px-6 py-3">Date</th>
+          <th scope="col" class="px-6 py-3">Start Time</th>
+          <th scope="col" class="px-6 py-3">End Time</th>
+          <th scope="col" class="px-6 py-3">Participants</th>
+          <th scope="col" class="px-6 py-3">Location</th>
+          <th scope="col" class="px-6 py-3">Amount</th>
+          <th scope="col" class="px-6 py-3">Ranking</th>
+          <th scope="col" class="px-6 py-3">Action</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let competition of competitions">
-          <td class="border px-4 py-2">{{ competition.code }}</td>
-          <td class="border px-4 py-2">{{ competition.date }}</td>
-          <td class="border px-4 py-2">{{ competition.startTime }}</td>
-          <td class="border px-4 py-2">{{ competition.endTime }}</td>
-          <td class="border px-4 py-2">{{ competition.numberOfParticipants }}</td>
-          <td class="border px-4 py-2">{{ competition.location }}</td>
-          <td class="border px-4 py-2">{{ competition.amount }}</td>
-          <td class="border px-4 py-2">{{ competition.status }}</td>
-          <td class="border px-4 py-2">
-              <a [routerLink]="'/competition/' + competition.code" class="text-blue-500 underline">View Details</a> <!-- Updated action link with Angular Router -->
+      <tbody >
+        <tr *ngFor="let competition of competitions" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"  >
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"  >{{ competition.code }}</th>
+          <td class="px-6 py-4">{{ competition.date }}</td>
+          <td class="px-6 py-4">{{ competition.startTime }}</td>
+          <td class="px-6 py-4">{{ competition.endTime }}</td>
+          <td class="px-6 py-4">{{ competition.numberOfParticipants }}</td>
+          <td class="px-6 py-4">{{ competition.location }}</td>
+          <td class="px-6 py-4">{{ competition.amount }} DH</td>
+          <td class="px-6 py-4">
+            <a [routerLink]="'/competition/' + competition.code + '/ranking'" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ranking</a>
+          </td>
+          <td class=" px-4 py-2">
+            <a [routerLink]="'/competition/' + competition.code" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View Details</a>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-
-
-
 </div>
