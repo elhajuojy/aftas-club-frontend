@@ -1,0 +1,82 @@
+
+<div class="container mt-2 mx-auto px-4 text-left">
+  <h1 class="text-2xl font-bold mb-4">Welcome, Admin!</h1>
+
+  <div class="flex justify-end mt-4">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Add Competition
+    </button>
+  </div>
+
+  <div class="card">
+    <p-table [value]="competitions" [tableStyle]="{'min-width': '60rem'}">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                Products
+                <p-button icon="pi pi-refresh"></p-button>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Reviews</th>
+                <!-- <th>Status</th> -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{product.name}}</td>
+                <td><img title="product" [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td>
+                <td>{{product.price | currency:'USD'}}</td>
+                <td>{{product.category}}</td>
+                <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td>
+                <!-- <td><p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag></td> -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                In total there are {{competitions ? competitions.length : 0 }} products.
+            </div>
+        </ng-template>
+    </p-table>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="table-auto w-full">
+      <thead>
+        <tr class="text-sm">
+          <th class="px-4 py-2">Code</th>
+          <th class="px-4 py-2">Date</th>
+          <th class="px-4 py-2">Start Time</th>
+          <th class="px-4 py-2">End Time</th>
+          <th class="px-4 py-2">Participants</th>
+          <th class="px-4 py-2">Location</th>
+          <th class="px-4 py-2">Amount</th>
+          <th class="px-4 py-2">Status</th>
+          <th class="px-4 py-2">Action</th> <!-- Added action column -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let competition of competitions">
+          <td class="border px-4 py-2">{{ competition.code }}</td>
+          <td class="border px-4 py-2">{{ competition.date }}</td>
+          <td class="border px-4 py-2">{{ competition.startTime }}</td>
+          <td class="border px-4 py-2">{{ competition.endTime }}</td>
+          <td class="border px-4 py-2">{{ competition.numberOfParticipants }}</td>
+          <td class="border px-4 py-2">{{ competition.location }}</td>
+          <td class="border px-4 py-2">{{ competition.amount }}</td>
+          <td class="border px-4 py-2">{{ competition.status }}</td>
+          <td class="border px-4 py-2">
+              <a [routerLink]="'/competition/' + competition.code" class="text-blue-500 underline">View Details</a> <!-- Updated action link with Angular Router -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+</div>
