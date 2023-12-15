@@ -17,6 +17,12 @@ export class RankingComponent implements OnInit {
   constructor(private rankingService: RankingService, private activeRoute :ActivatedRoute) {
   }
 
+  public sortRanking(): void {
+    this.contents.sort((a, b) => {
+      return a.rank - b.rank;
+    });
+  }
+
   ngOnInit(): void {
     this.activeRoute.params.subscribe(params => {
 
@@ -26,7 +32,7 @@ export class RankingComponent implements OnInit {
           // console.log(data);
           this.contents = data.podium.content;
           console.log(this.contents);
-
+          this.sortRanking();
         },
         error => {
           console.log(error);

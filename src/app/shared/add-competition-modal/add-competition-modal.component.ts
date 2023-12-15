@@ -36,7 +36,6 @@ export class AddCompetitionModalComponent implements OnInit {
     console.log("Valid: " + from.valid);
     console.log("Value: " + from.value.toString());
     //TODO: VALIDATION THAN SEND TO BACKEND
-
     this.competitionService.ajouterCompetition(from.value).subscribe(
       data => {
         console.log(data);
