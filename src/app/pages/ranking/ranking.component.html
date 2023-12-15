@@ -48,6 +48,9 @@
             </div>
           </th>
           <th scope="col" class="px-6 py-3">
+            Rank
+          </th>
+          <th scope="col" class="px-6 py-3">
             Name
           </th>
           <th scope="col" class="px-6 py-3">
@@ -59,9 +62,7 @@
           <th scope="col" class="px-6 py-3">
             Competition Code
           </th>
-          <th scope="col" class="px-6 py-3">
-            Rank
-          </th>
+
           <th scope="col" class="px-6 py-3">
             Score
           </th>
@@ -79,15 +80,15 @@
             </div>
           </td>
           <td class="px-6 py-4">
+            {{ content.rank }}
+          </td>
+          <td class="px-6 py-4">
             <div class="flex items-center">
-              <div class="ps-3">
                 <div class="text-base font-semibold">{{ content.name }}</div>
-              </div>
             </div>
           </td>
           <td class="px-6 py-4">
              <div class="font-normal text-gray-500">{{ content.familyName }}</div>
-
           </td>
           <td class="px-6 flex gap-3 py-4">
             <img class="w-8 h-6" src="{{ content.nationalityFlag }}" alt="Nationality Flag">
@@ -96,9 +97,7 @@
           <td class="px-6 py-4">
             {{ content.competitionCode }}
           </td>
-          <td class="px-6 py-4">
-            {{ content.rank }}
-          </td>
+
           <td class="px-6 py-4">
             {{ content.score }}
           </td>
