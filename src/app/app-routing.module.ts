@@ -6,10 +6,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
 
 const routes: Routes = [
-  { path: 'competition', component: CompetitionComponent },
+  { path: 'competitions', component: CompetitionComponent },
   {path: '',component: HomeComponent},
-  { path: 'competition/:id', component: CompetitionDetailComponent },
-  { path: 'competition/:id/ranking', component: RankingComponent },
+  { path: 'competitions/:id', component: CompetitionDetailComponent },
+  { path: 'competitions/:id/ranking', component: RankingComponent },
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];

@@ -1,7 +1,8 @@
 <div class="container mt-2 mx-auto px-4 text-left">
   <h1 class="text-2xl font-bold mb-4">Welcome, Admin!</h1>
 
-  <div class="flex justify-end mt-4">
+  <div class="flex justify-start gap-3 mt-4">
+    <app-filter-dropdown-competition></app-filter-dropdown-competition>
     <app-add-competition-modal></app-add-competition-modal>
   </div>
 
@@ -32,10 +33,10 @@
           <td class="px-6 py-4">{{ competition.amount }} DH</td>
           <td class="px-6 py-4"> {{ competition.status}} </td>
           <td class="px-6 py-4">
-            <a [routerLink]="'/competition/' + competition.code + '/ranking'" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ranking</a>
+            <a [routerLink]="'/competitions/' + competition.code + '/ranking'" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ranking</a>
           </td>
           <td class=" px-4 py-2">
-            <a [routerLink]="'/competition/' + competition.code" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View Details</a>
+            <a [routerLink]="'/competitions/' + competition.code" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View Details</a>
           </td>
         </tr>
       </tbody>

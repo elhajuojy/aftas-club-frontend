@@ -17,6 +17,7 @@ import { RankCardTrComponent } from './shared/rank-card-tr/rank-card-tr.componen
 import { AddCompetitionModalComponent } from './shared/add-competition-modal/add-competition-modal.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FilterDropdownCompetitionComponent } from './shared/filter-dropdown-competition/filter-dropdown-competition/filter-dropdown-competition.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     RankingComponent,
     RankCardTrComponent,
-    AddCompetitionModalComponent
+    AddCompetitionModalComponent,
+    FilterDropdownCompetitionComponent
   ],
   schemas:[NO_ERRORS_SCHEMA],
   imports: [

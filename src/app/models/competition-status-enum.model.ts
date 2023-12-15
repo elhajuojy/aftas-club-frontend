@@ -3,3 +3,10 @@ export enum StatusCompetition {
   FERME = 'FERME',
   ENCOURS = 'ENCOURS'
 }
+
+export interface IcompetitionsStatus{
+  name: string;
+  code: StatusCompetition;
+  url?: string;
+
+}

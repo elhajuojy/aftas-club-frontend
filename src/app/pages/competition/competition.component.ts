@@ -2,15 +2,12 @@ import { Component , OnInit } from '@angular/core';
 import { Competition } from 'src/app/models/Competition.model'
 import { ButtonModule } from 'primeng/button';
 import { CompeititonService } from 'src/app/services/competition/compeititon.service';
-import { StatusCompetition } from 'src/app/models/competition-status-enum.model';
+import { IcompetitionsStatus, StatusCompetition } from 'src/app/models/competition-status-enum.model';
 import { DropdownModule } from 'primeng/dropdown';
+import { Router } from '@angular/router';
 
 
-interface IcompetitionsStatus{
-  name: string;
-  code: StatusCompetition;
 
-}
 @Component({
   selector: 'app-competition',
   templateUrl: './competition.component.html',
@@ -29,7 +26,9 @@ export class CompetitionComponent implements OnInit   {
   page:number = 0;
   size:number = 0;
   totalPages: number = 0;
-  constructor(private competitionService: CompeititonService) {
+  constructor(private competitionService: CompeititonService, private router: Router) {
+    // Inside your component
+
   }
 
   upadteCompetitionStatus(competitions: Competition[]): void {
@@ -67,7 +66,6 @@ export class CompetitionComponent implements OnInit   {
       { name: 'EN_COURS', code: StatusCompetition.ENCOURS },
       { name: 'TERMINE', code: StatusCompetition.FERME },
     ];
-
   }
 
 
