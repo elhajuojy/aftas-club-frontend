@@ -8,3 +8,12 @@ export interface Competition {
   amount: number;
   status: string;
 }
+
+export interface CompetitionRequest{
+  date: string;
+  startTime: string;
+  endTime: string;
+  location: string;
+  amount: number;
+
+}
