@@ -25,32 +25,26 @@ export class CompetitionComponent implements OnInit   {
 
 
   competitions: Competition[] = [
-      {
-            "code": "91442123",
-            "date": "2023-12-17",
-            "startTime": "08:00:00",
-            "endTime": "17:00:00",
-            "numberOfParticipants": 3,
-            "location": "Nador",
-            "amount": 50000.0,
-            "status": "AVENIR"
-        },
-        {
-            "code": "01949759",
-            "date": "2023-12-17",
-            "startTime": "08:00:00",
-            "endTime": "17:00:00",
-            "numberOfParticipants": 3,
-            "location": "Nador",
-            "amount": 50000.0,
-            "status": "AVENIR"
-        }
   ]
   page:number = 0;
   size:number = 0;
   totalPages: number = 0;
   constructor(private competitionService: CompeititonService) {
+  }
 
+  upadteCompetitionStatus(competitions: Competition[]): void {
+    this.competitions.forEach((competition, index) => {
+      const currentDate = new Date();
+      const competitionDate = new Date(competition.date);
+
+      if (competitionDate > currentDate) {
+        competition.status = StatusCompetition.AVENIR
+      } else if (competitionDate < currentDate) {
+        competition.status = StatusCompetition.FERME
+      } else {
+        competition.status =StatusCompetition.ENCOURS
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -60,6 +54,7 @@ export class CompetitionComponent implements OnInit   {
       data => {
         this.competitions = data.content;
         console.log(data);
+        this.upadteCompetitionStatus(this.competitions);
         this.totalPages = data.totalPages;
       },
       error => {

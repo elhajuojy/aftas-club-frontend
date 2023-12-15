@@ -16,6 +16,7 @@
           <th scope="col" class="px-6 py-3">Participants</th>
           <th scope="col" class="px-6 py-3">Location</th>
           <th scope="col" class="px-6 py-3">Amount</th>
+          <th scope="col" class="px-6 py-3">Status</th>
           <th scope="col" class="px-6 py-3">Ranking</th>
           <th scope="col" class="px-6 py-3">Action</th>
         </tr>
@@ -29,6 +30,7 @@
           <td class="px-6 py-4">{{ competition.numberOfParticipants }}</td>
           <td class="px-6 py-4">{{ competition.location }}</td>
           <td class="px-6 py-4">{{ competition.amount }} DH</td>
+          <td class="px-6 py-4"> {{ competition.status}} </td>
           <td class="px-6 py-4">
             <a [routerLink]="'/competition/' + competition.code + '/ranking'" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ranking</a>
           </td>
