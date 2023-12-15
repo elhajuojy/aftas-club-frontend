@@ -4,7 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { CompeititonService } from 'src/app/services/competition/compeititon.service';
 import { IcompetitionsStatus, StatusCompetition } from 'src/app/models/competition-status-enum.model';
 import { DropdownModule } from 'primeng/dropdown';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -24,9 +24,10 @@ export class CompetitionComponent implements OnInit   {
   competitions: Competition[] = [
   ]
   page:number = 0;
-  size:number = 0;
+  size:number = 10;
   totalPages: number = 0;
-  constructor(private competitionService: CompeititonService, private router: Router) {
+  queryparams!: StatusCompetition ;
+  constructor(private competitionService: CompeititonService, private router: Router, private route : ActivatedRoute) {
     // Inside your component
 
   }
@@ -48,13 +49,48 @@ export class CompetitionComponent implements OnInit   {
 
   ngOnInit(): void {
     console.log("ngOnInit");
+    //TODO: GET QUERY PARAMS FROM URL
+    this.route.queryParams.subscribe(params => {
+      console.log(params);
+      switch (params['status']) {
+        case 'ferme':
+          this.queryparams = StatusCompetition.AVENIR;
+          break;
+        case 'encours':
+          this.queryparams = StatusCompetition.ENCOURS;
+          break;
+        case 'avenir':
+          this.queryparams = StatusCompetition.FERME;
+          break;
+        default:
+          this.queryparams = StatusCompetition.AVENIR;
+          break;
+      }
+      this.competitionService.getCompeitions(this.page, this.size, this.queryparams).subscribe(
+        data => {
+          this.competitions = data.content;
+          console.log(data);
+          this.upadteCompetitionStatus(this.competitions);
+          this.totalPages = data.totalPages;
+          console.log("calling getCompeitions");
 
-    this.competitionService.getCompeitions(this.page, this.size, StatusCompetition.AVENIR).subscribe(
+        },
+        error => {
+          console.log(error);
+        }
+
+      )
+    });
+
+
+    this.competitionService.getCompeitions(this.page, this.size, this.queryparams).subscribe(
       data => {
         this.competitions = data.content;
         console.log(data);
         this.upadteCompetitionStatus(this.competitions);
         this.totalPages = data.totalPages;
+        console.log("calling getCompeitions");
+
       },
       error => {
         console.log(error);

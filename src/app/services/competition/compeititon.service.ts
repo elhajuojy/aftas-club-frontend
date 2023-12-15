@@ -18,8 +18,8 @@ export class CompeititonService {
     private http: HttpClient
   ) { }
 
-  public getCompeitions(page:number,size:number,compeititonStatus :StatusCompetition):Observable<any> {
-    return this.http.get(this.baseUrl + '/competitions');
+  public getCompeitions(page: number, size: number, compeititonStatus: StatusCompetition): Observable<any> {
+    return this.http.get(this.baseUrl + '/competitions?page=' + page + '&size=' + size + '&status=' + compeititonStatus);
   }
   public ajouterCompetition(competitionRequest:CompetitionRequest): Observable<Competition>{
     return this.http.post<Competition>(this.baseUrl + '/competitions', competitionRequest);

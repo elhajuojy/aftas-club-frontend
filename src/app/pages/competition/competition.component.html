@@ -31,7 +31,7 @@
           <td class="px-6 py-4">{{ competition.numberOfParticipants }}</td>
           <td class="px-6 py-4">{{ competition.location }}</td>
           <td class="px-6 py-4">{{ competition.amount }} DH</td>
-          <td class="px-6 py-4"> {{ competition.status}} </td>
+          <td class="px-6 py-4" [ngStyle]="{ color: competition.status === 'encour' ? 'green' : competition.status === 'avenir' ? 'blue' : competition.status === 'ferme' ? 'red' : 'inherit' }">{{ competition.status }}</td>
           <td class="px-6 py-4">
             <a [routerLink]="'/competitions/' + competition.code + '/ranking'" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ranking</a>
           </td>
