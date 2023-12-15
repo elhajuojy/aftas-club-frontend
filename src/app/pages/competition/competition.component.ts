@@ -24,7 +24,7 @@ export class CompetitionComponent implements OnInit   {
   competitions: Competition[] = [
   ]
   page:number = 0;
-  size:number = 10;
+  size:number = 3;
   totalPages: number = 0;
   queryparams!: StatusCompetition ;
   constructor(private competitionService: CompeititonService, private router: Router, private route : ActivatedRoute) {
@@ -52,6 +52,7 @@ export class CompetitionComponent implements OnInit   {
     //TODO: GET QUERY PARAMS FROM URL
     this.route.queryParams.subscribe(params => {
       console.log(params);
+      this.page = params['page'];
       switch (params['status']) {
         case 'ferme':
           this.queryparams = StatusCompetition.AVENIR;
@@ -63,7 +64,7 @@ export class CompetitionComponent implements OnInit   {
           this.queryparams = StatusCompetition.FERME;
           break;
         default:
-          this.queryparams = StatusCompetition.AVENIR;
+          this.queryparams = StatusCompetition.default;
           break;
       }
       this.competitionService.getCompeitions(this.page, this.size, this.queryparams).subscribe(

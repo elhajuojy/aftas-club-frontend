@@ -19,9 +19,22 @@ export class CompeititonService {
   ) { }
 
   public getCompeitions(page: number, size: number, compeititonStatus: StatusCompetition): Observable<any> {
-    return this.http.get(this.baseUrl + '/competitions?page=' + page + '&size=' + size + '&status=' + compeititonStatus);
+    if (page == undefined) {
+      page = 0;
+    }
+    if (size == undefined) {
+      size = 3;
+    }
+    console.log("getCompeitions init " + compeititonStatus);
+    if (compeititonStatus == StatusCompetition.default) {
+      return this.http.get(this.baseUrl + '/competitions?page=' + page + '&size=' + size);
+    }
+
+    var statusQuery= '&status=' + compeititonStatus;
+    return this.http.get(this.baseUrl + '/competitions?page=' + page + '&size=' + size + statusQuery);
   }
-  public ajouterCompetition(competitionRequest:CompetitionRequest): Observable<Competition>{
+
+  public ajouterCompetition(competitionRequest: CompetitionRequest): Observable<Competition>{
     return this.http.post<Competition>(this.baseUrl + '/competitions', competitionRequest);
   }
 

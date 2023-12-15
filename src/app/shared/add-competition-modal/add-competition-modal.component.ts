@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { CompeititonService } from 'src/app/services/competition/compeititon.service';
 import { CompetitionRequest } from 'src/app/models/Competition.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-competition-modal',
@@ -26,6 +27,7 @@ export class AddCompetitionModalComponent implements OnInit {
       endTime: new FormControl('endTime'),
       location: new FormControl('location'),
       amount: new FormControl('amount'),
+      date: new FormControl('date'),
     });
   }
 
@@ -39,6 +41,11 @@ export class AddCompetitionModalComponent implements OnInit {
     this.competitionService.ajouterCompetition(from.value).subscribe(
       data => {
         console.log(data);
+              Swal.fire({
+            title: "Good job!",
+            text: "You clicked the button!",
+            icon: "success"
+            });
       },
       error => {
         console.log(error);
