@@ -17,6 +17,13 @@ export class MemberService {
     private http: HttpClient
   ) { }
 
+  public bulidQueryParams(query:Map<string, string> ): string {
+    // Function body goes here
+    const params = new URLSearchParams(Object.fromEntries(query));
+    console.log(params.toString());
+    return params.toString();
+  }
+
   public listerLesMembres(page: number, size: number): Observable<PageMember> {
     return this.http.get<PageMember>(this.baseUrl + '/members?page=' + page + '&size=' + size);
   }
@@ -26,7 +33,7 @@ export class MemberService {
   }
 
   public findMemberByMoreThanParam(queryParams: Map<string, string>): Observable<Member> {
-    return new Observable<Member>;
+    return this.http.get<Member>(this.baseUrl + '/members/search?' + this.bulidQueryParams(queryParams));
   }
 
 }
