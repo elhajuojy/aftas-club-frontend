@@ -2,6 +2,8 @@ import { NgModule , NO_ERRORS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastService, AngularToastifyModule } from 'angular-toastify';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +20,7 @@ import { AddCompetitionModalComponent } from './shared/add-competition-modal/add
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilterDropdownCompetitionComponent } from './shared/filter-dropdown-competition/filter-dropdown-competition/filter-dropdown-competition.component';
+import { AddMemberModalComponent } from './shared/add-member-modal/add-member-modal/add-member-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { FilterDropdownCompetitionComponent } from './shared/filter-dropdown-com
     RankingComponent,
     RankCardTrComponent,
     AddCompetitionModalComponent,
-    FilterDropdownCompetitionComponent
+    FilterDropdownCompetitionComponent,
+    AddMemberModalComponent
   ],
   schemas:[NO_ERRORS_SCHEMA],
   imports: [
@@ -39,11 +43,14 @@ import { FilterDropdownCompetitionComponent } from './shared/filter-dropdown-com
     ButtonModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AngularToastifyModule,
     FormsModule,
     ReactiveFormsModule,
 
   ],
-  providers: [],
+  providers: [
+    ToastService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
