@@ -38,5 +38,14 @@ export class CompeititonService {
     return this.http.post<Competition>(this.baseUrl + '/competitions', competitionRequest);
   }
 
+  public ajouterMembreDansCompetition(memberCompetitionRequest: any): Observable<any> {
+    const  MemberCompetitionRequest =  {
+      identityNumber  : memberCompetitionRequest.identityNumber,
+      codeCompetition : memberCompetitionRequest.codeCompetition
+    };
+
+    return this.http.post<any>(this.baseUrl + '/competitions/' + memberCompetitionRequest.codeCompetition + '/members',MemberCompetitionRequest );
+  }
+
 
 }

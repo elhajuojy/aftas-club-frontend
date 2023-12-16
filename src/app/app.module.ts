@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilterDropdownCompetitionComponent } from './shared/filter-dropdown-competition/filter-dropdown-competition/filter-dropdown-competition.component';
 import { AddMemberModalComponent } from './shared/add-member-modal/add-member-modal/add-member-modal.component';
+import { AddMemberToCompetitionComponent } from './shared/add-member-to-competition/add-member-to-competition/add-member-to-competition.component';
 
 @NgModule({
   declarations: [
@@ -34,16 +35,17 @@ import { AddMemberModalComponent } from './shared/add-member-modal/add-member-mo
     RankCardTrComponent,
     AddCompetitionModalComponent,
     FilterDropdownCompetitionComponent,
-    AddMemberModalComponent
+    AddMemberModalComponent,
+    AddMemberToCompetitionComponent
   ],
   schemas:[NO_ERRORS_SCHEMA],
   imports: [
+    AngularToastifyModule,
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AngularToastifyModule,
     FormsModule,
     ReactiveFormsModule,
 
