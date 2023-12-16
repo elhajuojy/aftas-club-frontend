@@ -4,14 +4,17 @@ import { CompetitionComponent } from './pages/competition/competition.component'
 import { CompetitionDetailComponent } from './pages/competition-detail/competition-detail.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
+import { MemberComponent } from './pages/member/member/member.component';
 
 const routes: Routes = [
   { path: 'competitions', component: CompetitionComponent },
   {path: '',component: HomeComponent},
   { path: 'competitions/:id', component: CompetitionDetailComponent },
+  { path: 'members', component: MemberComponent },
+  { path: 'members/:id', component: MemberComponent},
   { path: 'competitions/:id/ranking', component: RankingComponent },
-  { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: '**', redirectTo: '/', pathMatch: 'full' }
+  { path: '', redirectTo: '/competitions', pathMatch: 'full' },
+  { path: '**', redirectTo: '/competitions', pathMatch: 'full' }
 ];
 
 @NgModule({
