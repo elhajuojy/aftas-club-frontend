@@ -55,13 +55,13 @@ export class CompetitionComponent implements OnInit   {
       this.page = params['page'];
       switch (params['status']) {
         case 'ferme':
-          this.queryparams = StatusCompetition.AVENIR;
+          this.queryparams = StatusCompetition.FERME;
           break;
         case 'encours':
           this.queryparams = StatusCompetition.ENCOURS;
           break;
         case 'avenir':
-          this.queryparams = StatusCompetition.FERME;
+          this.queryparams = StatusCompetition.AVENIR;
           break;
         default:
           this.queryparams = StatusCompetition.default;
