@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup ,FormControl} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastService } from 'angular-toastify';
@@ -11,6 +11,9 @@ import { CompeititonService } from 'src/app/services/competition/compeititon.ser
 })
 export class AddMemberToCompetitionComponent {
   memberFrom!: FormGroup;
+  @Input() competitionId!: string;
+
+
 
 
   constructor(private competitionService: CompeititonService, private activeRoute: ActivatedRoute,
@@ -25,10 +28,8 @@ export class AddMemberToCompetitionComponent {
       codeCompetition : new FormControl('id')
     });
 
-    this.activeRoute.params.subscribe(s => {
-      console.log(s);
-      this.memberFrom.controls['codeCompetition'].setValue(s['id']);
-    });
+    this.memberFrom.controls['codeCompetition'].setValue(this.competitionId);
+
 
   }
 

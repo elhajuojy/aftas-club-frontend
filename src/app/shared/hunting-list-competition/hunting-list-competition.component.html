@@ -1,0 +1,57 @@
+<div class="relative mt-6 overflow-x-auto shadow-md sm:rounded-lg">
+  <table
+    class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+  >
+    <thead
+      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+        <th scope="col" class="px-6 py-3">Member Num</th>
+        <th scope="col" class="px-6 py-3">Member Name</th>
+        <th scope="col" class="px-6 py-3">fimlay Name</th>
+        <th scope="col" class="px-6 py-3">Ranking</th>
+        <th scope="col" class="px-6 py-3">Score</th>
+        <th scope="col" class="px-6 py-3">new Hunting</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let item of contents; trackBy: trackByFn"
+        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+      >
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {{ item.num }}
+        </th>
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {{ item.name }}
+        </th>
+
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {{ item.familyName }}
+        </th>
+
+        <td class="px-6 py-4">
+          {{ item.rank }}
+        </td>
+        <td class="px-6 py-4">
+          {{ item.score }}
+        </td>
+        <td class="px-6 py-4">
+          <app-add-hunt-to-member-modal
+            [competitionId]="competitionId"
+            [memberId]="item.num"
+          ></app-add-hunt-to-member-modal>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

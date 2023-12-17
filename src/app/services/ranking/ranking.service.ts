@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class RankingService {
   private baseUrl: string = environment.backendHost;
 
+
   constructor(
     private http: HttpClient
   ) { }

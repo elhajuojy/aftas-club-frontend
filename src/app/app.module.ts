@@ -22,6 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FilterDropdownCompetitionComponent } from './shared/filter-dropdown-competition/filter-dropdown-competition/filter-dropdown-competition.component';
 import { AddMemberModalComponent } from './shared/add-member-modal/add-member-modal/add-member-modal.component';
 import { AddMemberToCompetitionComponent } from './shared/add-member-to-competition/add-member-to-competition/add-member-to-competition.component';
+import { HuntingListCompetitionComponent } from './shared/hunting-list-competition/hunting-list-competition.component';
+import { AddHuntToMemberModalComponent } from './shared/add-hunt-to-member-modal/add-hunt-to-member-modal.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { AddMemberToCompetitionComponent } from './shared/add-member-to-competit
     AddCompetitionModalComponent,
     FilterDropdownCompetitionComponent,
     AddMemberModalComponent,
-    AddMemberToCompetitionComponent
+    AddMemberToCompetitionComponent,
+    HuntingListCompetitionComponent,
+    AddHuntToMemberModalComponent
   ],
   schemas:[NO_ERRORS_SCHEMA],
   imports: [
