@@ -24,10 +24,9 @@ export class HuntingService {
     return this.http.get(this.baseUrl + '/competitions/' + id);
   }
 
-  public ajouterHuntToMember(competitionId: string, num: number, fishId: number,): Observable<any> {
-    return this.http.post(this.baseUrl + '/competitions/' + competitionId + '/hunting', {
-      'num':num,
-      'fishId':fishId
-    });
+  public ajouterHuntToMember(competitionId: string, newHunt: any): Observable<any> {
+    console.log(newHunt);
+
+    return this.http.post(this.baseUrl + '/competitions/' + competitionId + '/hunting', newHunt);
   }
 }

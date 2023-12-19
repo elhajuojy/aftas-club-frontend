@@ -1,8 +1,10 @@
 <!-- Modal toggle -->
 <button
+  *ngIf="isTodayForHunting"
   [attr.data-modal-target]="memberId + '-add-hunt-to-user-modal'"
   [attr.data-modal-toggle]="memberId + '-add-hunt-to-user-modal'"
   (click)="clickme(memberId + '-add-hunt-to-user-modal')"
+  [id]="memberId + '-add-hunt-to-user-modal-button'"
   type="button"
   class="py-1.5 px-3 me-1 mb-1 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
 >
@@ -71,6 +73,7 @@
               formControlName="fishId"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             >
+              <option value="" disabled>Select Fish</option>
               <option
                 *ngFor="let fish of fishs; trackBy: trackFishById"
                 [value]="fish.id"
@@ -79,6 +82,39 @@
               </option>
             </select>
           </div>
+          <div class="mb-4">
+            <label
+              for="weight"
+              class="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Weight
+            </label>
+            <input
+              id="weight"
+              name="weight"
+              formControlName="weight"
+              type="number"
+              placeholder="Weight"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="number-of-fish"
+              class="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Number of fish hunted
+            </label>
+            <input
+              id="number-of-fish"
+              name="number-of-fish"
+              formControlName="number_of_fish"
+              type="number"
+              placeholder="number of fish"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+
           <div class="mb-4">
             <button
               type="submit"

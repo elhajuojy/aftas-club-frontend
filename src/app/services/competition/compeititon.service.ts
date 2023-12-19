@@ -9,6 +9,9 @@ import { CompetitionRequest } from 'src/app/models/Competition.model';
   providedIn: 'root'
 })
 export class CompeititonService {
+  getCompeitionsById(competitionId: string) :Observable<Competition>{
+    return this.http.get<Competition>(this.baseUrl + '/competitions/' + competitionId);
+  }
 
   private baseUrl: string = environment.backendHost;
 
@@ -25,7 +28,6 @@ export class CompeititonService {
     if (size == undefined) {
       size = 3;
     }
-    console.log("getCompeitions init " + compeititonStatus);
     if (compeititonStatus == StatusCompetition.default) {
       return this.http.get(this.baseUrl + '/competitions?page=' + page + '&size=' + size);
     }

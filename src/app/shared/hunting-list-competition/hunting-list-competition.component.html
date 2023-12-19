@@ -11,7 +11,9 @@
         <th scope="col" class="px-6 py-3">fimlay Name</th>
         <th scope="col" class="px-6 py-3">Ranking</th>
         <th scope="col" class="px-6 py-3">Score</th>
-        <th scope="col" class="px-6 py-3">new Hunting</th>
+        <th *ngIf="isTodayForHunting" scope="col" class="px-6 py-3">
+          new Hunting
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -45,8 +47,9 @@
         <td class="px-6 py-4">
           {{ item.score }}
         </td>
-        <td class="px-6 py-4">
+        <td *ngIf="isTodayForHunting" class="px-6 py-4">
           <app-add-hunt-to-member-modal
+            [isTodayForHunting]="isTodayForHunting"
             [competitionId]="competitionId"
             [memberId]="item.num"
           ></app-add-hunt-to-member-modal>

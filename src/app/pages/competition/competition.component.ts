@@ -16,6 +16,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class CompetitionComponent implements OnInit   {
 
+setStatus(arg0: string) {
+  if (arg0 === "avenir") {
+    return this.competitionStatus.purple;
+  }
+  else if (arg0 === 'ferme') {
+    return this.competitionStatus.red
+  }
+  else if (arg0 === 'encours') {
+    return this.competitionStatus.green
+  } else {
+    return ''
+  }
+}
+
+
+
+
+
   competitionsStatus: IcompetitionsStatus[] | undefined;
   selectedStatus: IcompetitionsStatus | undefined;
 
@@ -29,29 +47,34 @@ export class CompetitionComponent implements OnInit   {
   queryparams!: StatusCompetition ;
   constructor(private competitionService: CompeititonService, private router: Router, private route : ActivatedRoute) {
     // Inside your component
-
   }
+
+  competitionStatus = {
+    green: 'bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300',
+    red: 'bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300',
+    yellow: 'bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300',
+    purple :'bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300'
+  };
 
   upadteCompetitionStatus(competitions: Competition[]): void {
     this.competitions.forEach((competition, index) => {
-      const currentDate = new Date();
-      const competitionDate = new Date(competition.date);
+      const currentDate = new Date().getDate();
+      const competitionDate = new Date(competition.date).getDate();
+
 
       if (competitionDate > currentDate) {
         competition.status = StatusCompetition.AVENIR
       } else if (competitionDate < currentDate) {
         competition.status = StatusCompetition.FERME
-      } else {
-        competition.status =StatusCompetition.ENCOURS
+      }else if (competitionDate === currentDate) {
+        competition.status = StatusCompetition.ENCOURS
       }
     });
   }
 
   ngOnInit(): void {
-    console.log("ngOnInit");
-    //TODO: GET QUERY PARAMS FROM URL
+    //: GET QUERY PARAMS FROM URL
     this.route.queryParams.subscribe(params => {
-      console.log(params);
       this.page = params['page'];
       switch (params['status']) {
         case 'ferme':
@@ -70,11 +93,8 @@ export class CompetitionComponent implements OnInit   {
       this.competitionService.getCompeitions(this.page, this.size, this.queryparams).subscribe(
         data => {
           this.competitions = data.content;
-          console.log(data);
           this.upadteCompetitionStatus(this.competitions);
           this.totalPages = data.totalPages;
-          console.log("calling getCompeitions");
-
         },
         error => {
           console.log(error);
@@ -87,10 +107,8 @@ export class CompetitionComponent implements OnInit   {
     this.competitionService.getCompeitions(this.page, this.size, this.queryparams).subscribe(
       data => {
         this.competitions = data.content;
-        console.log(data);
         this.upadteCompetitionStatus(this.competitions);
         this.totalPages = data.totalPages;
-        console.log("calling getCompeitions");
 
       },
       error => {

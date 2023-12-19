@@ -11,7 +11,6 @@ export class AppComponent implements  OnInit {
   title = 'aftas-club-ng';
 
   ngOnInit(): void {
-    console.log("ngOnInit");
     initFlowbite();
   }
 }

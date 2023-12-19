@@ -6,7 +6,7 @@
     <app-add-competition-modal></app-add-competition-modal>
   </div>
 
-  <div class="mx-2 my-2 relative overflow-x-auto shadow-md sm:rounded-lg">
+  <div class="mx-2 my-2 relative overflow-x-auto shadow-sm sm:rounded-md">
     <table
       class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
     >
@@ -45,20 +45,10 @@
           </td>
           <td class="px-6 py-4">{{ competition.location }}</td>
           <td class="px-6 py-4">{{ competition.amount }} DH</td>
-          <td
-            class="px-6 py-4"
-            [ngStyle]="{
-              color:
-                competition.status === 'encour'
-                  ? 'green'
-                  : competition.status === 'avenir'
-                  ? 'blue'
-                  : competition.status === 'ferme'
-                  ? 'red'
-                  : 'inherit'
-            }"
-          >
-            {{ competition.status }}
+          <td class="px-6 py-4 text-center">
+            <span [class]="setStatus(competition.status)">
+              {{ competition.status }}</span
+            >
           </td>
           <td class="px-6 py-4">
             <a

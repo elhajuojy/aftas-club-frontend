@@ -16,7 +16,6 @@ export class CompetitionDetailComponent implements OnInit {
   ngOnInit(): void {
 
     this.activeRoute.params.subscribe(s => {
-      console.log(s);
       this.competitionId = s['id'];
     });
 

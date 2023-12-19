@@ -14,10 +14,14 @@ export class AddHuntToMemberModalComponent {
 
   @Input() competitionId!: string;
   @Input() memberId!: number;
+  @Input() isTodayForHunting !: boolean;
+
   from!: FormGroup;
 
   fishs: Fish[] = [];
   trackFishById: TrackByFunction<Fish>;
+
+
 
   constructor(private fishService : FishService , private huntingService : HuntingService , private _toastService: ToastService) {
     this.trackFishById = (_: number, fish: Fish) => fish.id;
@@ -26,13 +30,13 @@ export class AddHuntToMemberModalComponent {
   ngOnInit(): void {
     this.from = new FormGroup({
       fishId: new FormControl(''),
+      weight: new FormControl(''),
+      number_of_fish: new FormControl(''),
     });
 
-    console.log(this.memberId);
-    console.log(this.competitionId);
+
     this.fishService.getFishs().subscribe(
       data => {
-        console.log(data);
         this.fishs = data;
       },
       error => {
@@ -41,9 +45,16 @@ export class AddHuntToMemberModalComponent {
     );
   }
 
-  onSubmitHunt(from:FormGroup) {
+  onSubmitHunt(from: FormGroup) {
+    //TODO : VALIDATE THE FORM
+    var newHunt = {
+      fishId: this.from.value.fishId,
+      weight: this.from.value.weight,
+      number_of_fish: this.from.value.number_of_fish,
+      num : this.memberId
+    }
     this.huntingService.ajouterHuntToMember(
-      this.competitionId, this.memberId ,this.from.value.fishId
+      this.competitionId, newHunt
     ).subscribe(
       data => {
         console.log(data);
@@ -63,3 +74,7 @@ export class AddHuntToMemberModalComponent {
   }
 
 }
+
+
+
+
