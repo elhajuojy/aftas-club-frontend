@@ -61,6 +61,7 @@ setStatus(arg0: string) {
       const currentDate = new Date().getDate();
       const competitionDate = new Date(competition.date).getDate();
 
+      console.log(competition.date);
 
       if (competitionDate > currentDate) {
         competition.status = StatusCompetition.AVENIR

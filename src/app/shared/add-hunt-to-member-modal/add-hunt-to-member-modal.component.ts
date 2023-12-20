@@ -60,7 +60,7 @@ export class AddHuntToMemberModalComponent {
         console.log(data);
         this._toastService.success(data.message);
         //refersh the page
-        window.location.reload();
+        // window.location.reload();
       },
       error => {
         console.log(error);
