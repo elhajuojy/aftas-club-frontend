@@ -11,7 +11,19 @@ import { Content } from 'src/app/models/podium-compeittion.model';
 export class RankingComponent implements OnInit {
 
   contents: Array<Content> = [];
+  rankbadge: any = {
+    '1':'/assets/1st-prize.png',
+    '2':'/assets/2nd-place.png',
+    '3': '/assets/3rd-place_.png',
+    '4':'/assets/trophy-star.png'
 
+  };
+  rankStyle: any = {
+    '1':'',
+    '2':'',
+    '3': '',
+    '4':''
+  }
 
 
   constructor(private rankingService: RankingService, private activeRoute :ActivatedRoute) {
