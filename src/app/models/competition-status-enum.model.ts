@@ -2,7 +2,7 @@ export enum StatusCompetition {
   AVENIR = 'avenir',
   FERME = 'ferme',
   ENCOURS = 'encour',
-  default = ''
+  default = 'DEFUALT'
 }
 
 export interface IcompetitionsStatus{

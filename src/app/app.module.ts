@@ -26,6 +26,8 @@ import { HuntingListCompetitionComponent } from './shared/hunting-list-competiti
 import { AddHuntToMemberModalComponent } from './shared/add-hunt-to-member-modal/add-hunt-to-member-modal.component';
 import { MemberDetailComponent } from './pages/member-detail/member-detail.component';
 import { MemberDetailHuntingComponent } from './pages/member-detail-hunting/member-detail-hunting.component';
+import { FishComponent } from './pages/fish/fish.component';
+import { AddFishModalComponent } from './shared/add-fish-modal/add-fish-modal.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { MemberDetailHuntingComponent } from './pages/member-detail-hunting/memb
     HuntingListCompetitionComponent,
     AddHuntToMemberModalComponent,
     MemberDetailComponent,
-    MemberDetailHuntingComponent
+    MemberDetailHuntingComponent,
+    FishComponent,
+    AddFishModalComponent
   ],
   schemas:[NO_ERRORS_SCHEMA],
   imports: [

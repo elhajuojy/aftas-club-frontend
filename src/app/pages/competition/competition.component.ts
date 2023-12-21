@@ -58,18 +58,7 @@ setStatus(arg0: string) {
 
   upadteCompetitionStatus(competitions: Competition[]): void {
     this.competitions.forEach((competition, index) => {
-      const currentDate = new Date().getDate();
-      const competitionDate = new Date(competition.date).getDate();
-
-      console.log(competition.date);
-
-      if (competitionDate > currentDate) {
-        competition.status = StatusCompetition.AVENIR
-      } else if (competitionDate < currentDate) {
-        competition.status = StatusCompetition.FERME
-      }else if (competitionDate === currentDate) {
-        competition.status = StatusCompetition.ENCOURS
-      }
+      competition.status = this.competitionService.getCompetitionStatus(competition);
     });
   }
 
